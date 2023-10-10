@@ -1,0 +1,166 @@
+C51 COMPILER V9.54   IR                                                                    10/04/2023 13:31:13 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE IR
+OBJECT MODULE PLACED IN .\Objects\IR.obj
+COMPILER INVOKED BY: F:\Keli5\C51\BIN\C51.EXE IR.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\IR.lst) 
+                    -TABS(2) OBJECT(.\Objects\IR.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Timer0.h"
+   3          #include "Int0.h"
+   4          sbit IRIN=P3^2;
+   5          unsigned int IR_Time;  //计时
+   6          unsigned char IR_State; //定义状态
+   7          
+   8          unsigned char IR_Data[4];//表示四个字节
+   9          unsigned char IR_pData;//用于记录是不是把32位数据全部收到，标志
+  10          
+  11          unsigned char IR_DataFlag;//就就是如果数据如果收到了，就置1。用于在主函数中进行�
+             -�断
+  12          unsigned char IR_RepeatFlag;//重发标志位
+  13          
+  14          unsigned char IR_Address;//存最终的结果
+  15          unsigned char IR_Command;//命令码
+  16          
+  17          void IR_Init(void)
+  18          {
+  19   1        Timer0_Init();//定时器初始化
+  20   1        Int0_Init();// 中断初始化
+  21   1       
+  22   1      }
+  23          unsigned char IR_GetDataFlag(void)
+  24          {
+  25   1       if(IR_DataFlag)
+  26   1       {
+  27   2        IR_DataFlag=0;
+  28   2         return 1;
+  29   2       }
+  30   1       return 0;
+  31   1      }
+  32          unsigned char IR_GetRepeatFlag(void)
+  33          {
+  34   1       if(IR_RepeatFlag)
+  35   1       {
+  36   2        IR_RepeatFlag=0;
+  37   2        return 1;
+  38   2       }
+  39   1       return 0;
+  40   1      }
+  41          
+  42          
+  43          unsigned char IR_GetAddress(void)
+  44          {
+  45   1       return IR_Address;
+  46   1      }
+  47          
+  48          unsigned char IR_GetCommand(void)
+  49          {
+  50   1       return IR_Command;
+  51   1      }
+  52          void Int0_Routine(void) interrupt 0
+  53          {
+C51 COMPILER V9.54   IR                                                                    10/04/2023 13:31:13 PAGE 2   
+
+  54   1         //因为最开始这个状态时空闲状态，定义为0,表示此时空闲
+  55   1        if((IR_State==0)&&(IRIN==1))
+  56   1        {
+  57   2          Timer0_SetCounter(0);//确保这个计数器从0开始
+  58   2          Timer0_Run(1);//参数1表示计数器开始计数
+  59   2          IR_State=1;
+  60   2        }
+  61   1        //此时就是当上一次进中断之后，这个状态被设置了
+  62   1        //然后下一次进中断，因为这个IR_sTATE==1,所以可以直接进行数其中的间隔时间就�
+             -��以了
+  63   1        
+  64   1        else if(IR_State==1)
+  65   1        {
+  66   2          IR_Time=Timer0_GetCounter();//读到从高电平到低电平，又是高电平的时间间隔
+  67   2          Timer0_SetCounter(0);//清0.方便下一次计时
+  68   2           /*
+  69   2            根据NEC编码可以得到，这个Start标志的时间，以及repeat标志的时间
+  70   2          以此来进行判断这个是什么
+  71   2          */
+  72   2          //为什么是一个范围，因为这个按键可能有抖动，所以时间不可能是刚好13500微�
+             -��
+  73   2          if(IR_Time>13500-500 && IR_Time<13500+500)
+  74   2          {
+  75   3            
+  76   3            IR_State=2;//表示下一次再来中断就要开始解码数据部分了
+  77   3          }else if(IR_Time>11250-500 && IR_Time<11250+500)
+  78   2          {
+  79   3            //接受到这个信号表示这一帧已经结束了，后面已经不会使用数据了
+  80   3            IR_RepeatFlag=1;
+  81   3            //停止计时器
+  82   3            Timer0_Run(0);
+  83   3            IR_State=0;//从新把这个状态置位0
+  84   3          }
+  85   2          else
+  86   2          {
+  87   3            //解码错误才会出现
+  88   3            IR_State=1;
+  89   3          }
+  90   2        }
+  91   1        //开始解码
+  92   1        else if(IR_State==2)
+  93   1        {
+  94   2        IR_Time=Timer0_GetCounter();
+  95   2        Timer0_SetCounter(0);
+  96   2          //这是逻辑0的
+  97   2         if(IR_Time>1120-500 && IR_Time<1120+500)
+  98   2          {
+  99   3            /*
+ 100   3            每一次都是四个字节的数据，以此存取32位
+ 101   3            */
+ 102   3             IR_Data[IR_pData/8] &= ~(0x01<<(IR_pData%8));
+ 103   3            IR_pData++;
+ 104   3          }
+ 105   2            //这是逻辑1的
+ 106   2         else if(IR_Time>2250-500 && IR_Time<2250+500)
+ 107   2          {
+ 108   3            /*
+ 109   3            每一次都是四个字节的数据，以此存取32位
+ 110   3            */
+ 111   3             IR_Data[IR_pData/8] &= ~(0x01<<(IR_pData%8));
+ 112   3            IR_pData++;
+ 113   3          }
+C51 COMPILER V9.54   IR                                                                    10/04/2023 13:31:13 PAGE 3   
+
+ 114   2          else{
+ 115   3          IR_pData=0;
+ 116   3          IR_State=1;
+ 117   3          }
+ 118   2          //因为这是表示计算数据位数的，且这个数据是32位，所以判断是不是收结束了
+ 119   2          if(IR_pData>=32)
+ 120   2          {
+ 121   3           IR_pData=0;
+ 122   3            //根据器NEC编码得到的
+ 123   3             if((IR_Data[0]==~IR_Data[1]) && (IR_Data[2]==~IR_Data[3]) )
+ 124   3             {
+ 125   4               //上述判断说明数据验证正确
+ 126   4               //把数据转存过去
+ 127   4               IR_Address=IR_Data[0];
+ 128   4               IR_Command=IR_Data[2];
+ 129   4               IR_DataFlag=1;//告诉他已经收到数据了
+ 130   4             }
+ 131   3           Timer0_Run(0);
+ 132   3           IR_State=0;
+ 133   3          }
+ 134   2        }
+ 135   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    372    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,13 @@
+..\obj\main.o: main.c
+..\obj\main.o: ..\HARDWARE\LED\led.h
+..\obj\main.o: ..\SYSTEM\sysum\stm32f10x.h
+..\obj\main.o: ..\SYSTEM\sysum\core_cm3.h
+..\obj\main.o: D:\ProgramFiles\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\main.o: ..\SYSTEM\sysum\system_stm32f10x.h
+..\obj\main.o: ..\SYSTEM\sys\sys.h
+..\obj\main.o: ..\HARDWARE\KEY\key.h
+..\obj\main.o: ..\HARDWARE\DELAY\delay.h
+..\obj\main.o: ..\SYSTEM\usart\usart.h
+..\obj\main.o: D:\ProgramFiles\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\main.o: ..\HARDWARE\EXTI\exti.h
+..\obj\main.o: ..\HARDWARE\TIME\time.h

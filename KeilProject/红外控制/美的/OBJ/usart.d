@@ -1,0 +1,9 @@
+..\obj\usart.o: ..\SYSTEM\usart\usart.c
+..\obj\usart.o: ..\SYSTEM\usart\usart.h
+..\obj\usart.o: ..\SYSTEM\sysum\stm32f10x.h
+..\obj\usart.o: ..\SYSTEM\sysum\core_cm3.h
+..\obj\usart.o: D:\ProgramFiles\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\usart.o: ..\SYSTEM\sysum\system_stm32f10x.h
+..\obj\usart.o: D:\ProgramFiles\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\usart.o: ..\SYSTEM\sys\sys.h
+..\obj\usart.o: ..\HARDWARE\LED\LED.h

@@ -1,0 +1,10 @@
+..\obj\time.o: ..\HARDWARE\TIME\time.c
+..\obj\time.o: ..\HARDWARE\TIME\time.h
+..\obj\time.o: ..\SYSTEM\sysum\stm32f10x.h
+..\obj\time.o: ..\SYSTEM\sysum\core_cm3.h
+..\obj\time.o: D:\ProgramFiles\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\time.o: ..\SYSTEM\sysum\system_stm32f10x.h
+..\obj\time.o: ..\HARDWARE\DELAY\delay.h
+..\obj\time.o: ..\SYSTEM\sys\sys.h
+..\obj\time.o: ..\SYSTEM\usart\usart.h
+..\obj\time.o: D:\ProgramFiles\keil5\ARM\ARMCC\Bin\..\include\stdio.h

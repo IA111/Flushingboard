@@ -1,0 +1,76 @@
+Dependencies for Project 'test', Target 'LED': (DO NOT MODIFY !)
+F (..\SYSTEM\sysum\system_stm32f10x.c)(0x4D783CB0)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\system_stm32f10x.o --omf_browse ..\obj\system_stm32f10x.crf --depend ..\obj\system_stm32f10x.d)
+I (..\SYSTEM\sysum\stm32f10x.h)(0x4D783CB4)
+I (..\SYSTEM\sysum\core_cm3.h)(0x4D523B58)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (..\SYSTEM\sysum\system_stm32f10x.h)(0x4D783CAA)
+F (..\SYSTEM\sysum\core_cm3.c)(0x4C0C587E)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\core_cm3.o --omf_browse ..\obj\core_cm3.crf --depend ..\obj\core_cm3.d)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+F (.\startup_stm32f10x_hd.s)(0x4D783CDE)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 524" --pd "STM32F10X_HD SETA 1"--list ..\obj\startup_stm32f10x_hd.lst --xref -o ..\obj\startup_stm32f10x_hd.o --depend ..\obj\startup_stm32f10x_hd.d)
+F (.\main.c)(0x5AD1DD94)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+I (..\HARDWARE\LED\led.h)(0x5AB8A808)
+I (..\SYSTEM\sysum\stm32f10x.h)(0x4D783CB4)
+I (..\SYSTEM\sysum\core_cm3.h)(0x4D523B58)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (..\SYSTEM\sysum\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\sys\sys.h)(0x5AB8A9F8)
+I (..\HARDWARE\KEY\key.h)(0x5AAD156E)
+I (..\HARDWARE\DELAY\delay.h)(0x5AD149BD)
+I (..\SYSTEM\usart\usart.h)(0x5ABB7C2C)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (..\HARDWARE\EXTI\exti.h)(0x5ABCCE2E)
+I (..\HARDWARE\TIME\time.h)(0x5AD17771)
+F (..\HARDWARE\LED\LED.c)(0x5AB4EEA1)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\led.o --omf_browse ..\obj\led.crf --depend ..\obj\led.d)
+I (..\HARDWARE\LED\led.h)(0x5AB8A808)
+I (..\SYSTEM\sysum\stm32f10x.h)(0x4D783CB4)
+I (..\SYSTEM\sysum\core_cm3.h)(0x4D523B58)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (..\SYSTEM\sysum\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\sys\sys.h)(0x5AB8A9F8)
+F (..\HARDWARE\KEY\KEY.c)(0x5AAE5927)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\key.o --omf_browse ..\obj\key.crf --depend ..\obj\key.d)
+I (..\HARDWARE\KEY\key.h)(0x5AAD156E)
+I (..\SYSTEM\sysum\stm32f10x.h)(0x4D783CB4)
+I (..\SYSTEM\sysum\core_cm3.h)(0x4D523B58)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (..\SYSTEM\sysum\system_stm32f10x.h)(0x4D783CAA)
+I (..\HARDWARE\DELAY\delay.h)(0x5AD149BD)
+F (..\HARDWARE\DELAY\DELAY.c)(0x5AD149D1)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
+I (..\HARDWARE\DELAY\delay.h)(0x5AD149BD)
+I (..\SYSTEM\sysum\stm32f10x.h)(0x4D783CB4)
+I (..\SYSTEM\sysum\core_cm3.h)(0x4D523B58)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (..\SYSTEM\sysum\system_stm32f10x.h)(0x4D783CAA)
+F (..\HARDWARE\EXTI\exti.c)(0x5ABCD590)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\exti.o --omf_browse ..\obj\exti.crf --depend ..\obj\exti.d)
+I (..\HARDWARE\EXTI\exti.h)(0x5ABCCE2E)
+I (..\SYSTEM\sysum\stm32f10x.h)(0x4D783CB4)
+I (..\SYSTEM\sysum\core_cm3.h)(0x4D523B58)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (..\SYSTEM\sysum\system_stm32f10x.h)(0x4D783CAA)
+I (..\HARDWARE\KEY\key.h)(0x5AAD156E)
+I (..\SYSTEM\sys\sys.h)(0x5AB8A9F8)
+I (..\HARDWARE\LED\led.h)(0x5AB8A808)
+F (..\HARDWARE\TIME\time.c)(0x5AD1BD52)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\time.o --omf_browse ..\obj\time.crf --depend ..\obj\time.d)
+I (..\HARDWARE\TIME\time.h)(0x5AD17771)
+I (..\SYSTEM\sysum\stm32f10x.h)(0x4D783CB4)
+I (..\SYSTEM\sysum\core_cm3.h)(0x4D523B58)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (..\SYSTEM\sysum\system_stm32f10x.h)(0x4D783CAA)
+I (..\HARDWARE\DELAY\delay.h)(0x5AD149BD)
+I (..\SYSTEM\sys\sys.h)(0x5AB8A9F8)
+I (..\SYSTEM\usart\usart.h)(0x5ABB7C2C)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
+F (..\SYSTEM\sys\sys.c)(0x5AB8A9F8)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\sys.o --omf_browse ..\obj\sys.crf --depend ..\obj\sys.d)
+I (..\SYSTEM\sys\sys.h)(0x5AB8A9F8)
+I (..\SYSTEM\sysum\stm32f10x.h)(0x4D783CB4)
+I (..\SYSTEM\sysum\core_cm3.h)(0x4D523B58)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (..\SYSTEM\sysum\system_stm32f10x.h)(0x4D783CAA)
+F (..\SYSTEM\usart\usart.c)(0x5ABB7C2C)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\DELAY -I ..\SYSTEM\sysum -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\EXTI -I ..\HARDWARE\TIME-I.\RTE\_LED-ID:\ProgramFiles\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\ProgramFiles\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD-o ..\obj\usart.o --omf_browse ..\obj\usart.crf --depend ..\obj\usart.d)
+I (..\SYSTEM\usart\usart.h)(0x5ABB7C2C)
+I (..\SYSTEM\sysum\stm32f10x.h)(0x4D783CB4)
+I (..\SYSTEM\sysum\core_cm3.h)(0x4D523B58)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (..\SYSTEM\sysum\system_stm32f10x.h)(0x4D783CAA)
+I (D:\ProgramFiles\keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (..\SYSTEM\sys\sys.h)(0x5AB8A9F8)
+I (..\HARDWARE\LED\LED.h)(0x5AB8A808)

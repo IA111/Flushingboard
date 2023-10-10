@@ -1,0 +1,8 @@
+#ifndef __TIMER0_H__
+#define __TIMER0_H__
+
+void Timer0_Init();
+void Timer0_Run(unsigned char Flag);
+unsigned int Timer0_GetCounter(void);
+void Timer0_SetCounter(unsigned int Value);
+#endif

@@ -1,0 +1,94 @@
+C51 COMPILER V9.54   MAIN                                                                  08/12/2023 21:09:16 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: F:\Keli5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay1.h"
+   3          //RCLK=RCK,系统的等于自己命名的
+   4          sbit RCK =P3^5;//进行从新声明，为了更号理解，表示P3的第五位
+   5          sbit SCK=P3^6;
+   6          sbit SER=P3^4;
+   7          
+   8          void _74HC595_WriteByte(unsigned char Byte)
+   9          {
+  10   1        unsigned int i;
+  11   1        for(i=0;i<8;i++)
+  12   1        {
+  13   2          SER=Byte &(0x80>>i);
+  14   2          SCK=1;
+  15   2          SCK=0;
+  16   2          /*
+  17   2        SER=Byte &0x80; //如果他的最高为1，则&1000 0000之后最高位为1
+  18   2        /*
+  19   2        在写时SER只能等于1或者0，但是这个如果等号右非0时，
+  20   2        就会自动等于1
+  21   2        
+  22   2        SCK=1;//和主函数=0，构成一个上升沿
+  23   2        SCK=0;//回位
+  24   2        SER=Byte&0x40;//移第二位
+  25   2        SCK=1;
+  26   2        SCK=0;
+  27   2        SER=Byte&0x20;
+  28   2        SCK=1;
+  29   2        SCK=0;
+  30   2          这样一共要写八次太慢了，使用一个循环*/
+  31   2        }
+  32   1        RCK=1;
+  33   1        RCK=0;
+  34   1      }
+  35          //点阵屏显示函数
+  36          void MatrixLED_ShowColumn(unsigned char Column,unsigned char Data)
+  37          {
+  38   1         _74HC595_WriteByte(Data);
+  39   1        P0=~(0x80>>Column);//也可以用if()
+  40   1        //段选 位选 延时 位清零
+  41   1        Delay1(1);
+  42   1        P0=0xff;
+  43   1      }
+  44          void main()
+  45          {
+  46   1        SCK=0;  
+  47   1        RCK=0;//达到上升沿就会输出
+  48   1      /*
+  49   1        MatrixLED_ShowColumn(0,0xAA);
+  50   1        亮点阵屏的第0列的 10101010 为1的亮
+  51   1        */
+  52   1        /*
+  53   1        由于这个开发板没有LED灯，直接设置LED显示屏幕，
+  54   1        然后需要拔掉他旁边的J24跳线帽
+C51 COMPILER V9.54   MAIN                                                                  08/12/2023 21:09:16 PAGE 2   
+
+  55   1        */
+  56   1        while(1)
+  57   1        {
+  58   2            MatrixLED_ShowColumn(0,0x80);
+  59   2            MatrixLED_ShowColumn(1,0x40);
+  60   2            MatrixLED_ShowColumn(2,0x20);
+  61   2            MatrixLED_ShowColumn(3,0x10);
+  62   2            MatrixLED_ShowColumn(4,0x08);
+  63   2            MatrixLED_ShowColumn(5,0x04);
+  64   2            MatrixLED_ShowColumn(6,0x02);
+  65   2            MatrixLED_ShowColumn(7,0x01);
+  66   2      
+  67   2        }
+  68   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    151    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

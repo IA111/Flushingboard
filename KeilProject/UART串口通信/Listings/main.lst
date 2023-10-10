@@ -1,0 +1,55 @@
+C51 COMPILER V9.54   MAIN                                                                  10/07/2023 22:54:29 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: F:\Keli5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "LCD1602.h"
+   3          #include "UART.h"
+   4          unsigned char temp;
+   5          void main()
+   6          {
+   7   1        LCD_Init();
+   8   1        UART_Init(4800);
+   9   1        EA=1;//打开所有中断
+  10   1          while(1)
+  11   1        {
+  12   2          LCD_ShowHexNum(1,1,temp,2);
+  13   2         }
+  14   1      }
+  15          
+  16          //串口中断的中断号是4
+  17          void UART_Zhongduan() interrupt 4
+  18          {
+  19   1        /*
+  20   1        注意两个引脚RI以及TI
+  21   1        RI:当数据在从单总线到接受控制器的的时候，作为标志位，
+  22   1        TI：是数据在从单总线进行发送的时候，作为发送是不是已经完成的标志位
+  23   1        
+  24   1        */
+  25   1        if(RI==1)
+  26   1        {
+  27   2          RI=0;
+  28   2          temp=SBUF;
+  29   2        }
+  30   1        
+  31   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     38    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,8 @@
+".\Objects\LCD1602.obj",
+".\Objects\Delay1.obj",
+".\Objects\MatrixKey.obj",
+".\Objects\xiugai.obj",
+".\Objects\xiugaimatrix.obj" 
+TO ".\Objects\Project" 
+PRINT(".\Listings\Project.m51") RAMSIZE(256) 
+DISABLEWARNING (16) 

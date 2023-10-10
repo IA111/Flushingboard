@@ -1,0 +1,59 @@
+C51 COMPILER V9.54   TIMER0                                                                10/04/2023 13:30:51 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TIMER0
+OBJECT MODULE PLACED IN .\Objects\Timer0.obj
+COMPILER INVOKED BY: F:\Keli5\C51\BIN\C51.EXE Timer0.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Time
+                    -r0.lst) TABS(2) OBJECT(.\Objects\Timer0.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          //配置寄存器
+   4          void Timer0_Init()
+   5          {
+   6   1        
+   7   1        TMOD &= 0xF0;   //设置定时器模式
+   8   1        TMOD |= 0x01;   //设置定时器模式
+   9   1        TL0 = 0;    //设置定时初值
+  10   1        TH0 =0;   //设置定时初值
+  11   1        TF0 = 0;    //清除TF0标志
+  12   1        TR0 = 0;    //定时器0不计时
+  13   1      
+  14   1      }
+  15          //设置计数器，把十六位的值放在计数器里面
+  16          void Timer0_SetCounter(unsigned int Value)
+  17          {
+  18   1        TH0=Value/256;
+  19   1        TL0=Value%256;
+  20   1      }
+  21          //返回一个16位的数据，虽然这是一个十六位的数据
+  22          //但是通过一个Int型数据来接受，就可以直接得到一个整形数据了
+  23          
+  24          unsigned int Timer0_GetCounter(void)
+  25          {
+  26   1      return (TH0<<8)|TL0;
+  27   1      }
+  28          
+  29          //决定计时器是不是开始计时
+  30          void Timer0_Run(unsigned char Flag)
+  31          {
+  32   1        TR0=Flag;  //在调用哪一个函数给1的时候开始计时，
+  33   1        //给0的时候上面的配置寄存器那个函数就会停止计时。
+  34   1        
+  35   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

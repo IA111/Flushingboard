@@ -1,0 +1,126 @@
+C51 COMPILER V9.54   XIUGAI                                                                09/06/2023 10:57:18 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE XIUGAI
+OBJECT MODULE PLACED IN .\Objects\xiugai.obj
+COMPILER INVOKED BY: F:\Keli5\C51\BIN\C51.EXE xiugai.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\xiug
+                    -ai.lst) TABS(2) OBJECT(.\Objects\xiugai.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay1.h"
+   3          #include "LCD1602.h"
+   4          #include "MatrixKey.h"
+   5          #include "xiugaimatrix.h"
+   6          
+   7          /*
+   8          main.c文件中就是实现教程中的要求
+   9          这个xiugai.c文件中实现的是下面的这俩功能：
+  10          1.实现重新设置密码功能，通过对比设置的密码和输入的密码
+  11          2.输错一个数字的时候，不是全部重新输入，改成了退位。
+  12          */
+  13          
+  14          
+  15          
+  16          unsigned char KeyNum,KeyNum1;
+  17          unsigned int Passwordset;
+  18          unsigned int Password;
+  19          unsigned int count,num;
+  20          unsigned int aa;//用于判断输入的是多少
+  21          void main()  
+  22          {
+  23   1          LCD_Init();
+  24   1          // LCD_ShowString(2,1,"Password:");// 第一个参数是起始行位置，第二个参数是起始列位
+             -置
+  25   1        while(1)
+  26   1        {
+  27   2      //  KeyNum1=MatrixKey1();
+  28   2        KeyNum=MatrixKey();
+  29   2        if(KeyNum==13)
+  30   2        {
+  31   3          LCD_ShowString(1,1,"PasswordSet:");
+  32   3        }else if(KeyNum)
+  33   2        {
+  34   3        if(KeyNum<=10)
+  35   3        {
+  36   4          if(num<4)
+  37   4          {
+  38   5          Passwordset*=10;
+  39   5          Passwordset+=KeyNum%10;
+  40   5          num++;
+  41   5          }
+  42   4          aa++;
+  43   4          LCD_ShowNum(1,13,Passwordset,4);//显示出第一次设置的密码
+  44   4        }
+  45   3      } 
+  46   2        if(KeyNum==14)
+  47   2         {
+  48   3          LCD_ShowString(2,1,"Password:");
+  49   3         }
+  50   2          else if(aa>4)
+  51   2          {
+  52   3            if(KeyNum)
+  53   3            {
+C51 COMPILER V9.54   XIUGAI                                                                09/06/2023 10:57:18 PAGE 2   
+
+  54   4            //s1-s10按键按下，就是在输入密码
+  55   4            if(KeyNum<=10)
+  56   4            {
+  57   5              //因为输密码是从前往后，就相当于先输入高位数字，所以要乘以10，
+  58   5               if(count<4)
+  59   5               {
+  60   6               Password*=10;
+  61   6               Password +=KeyNum%10;
+  62   6               count++;//记录密码位数
+  63   6               }
+  64   5              
+  65   5              //Password *=10;
+  66   5              //Password += KeyNum%10;//按谁表示就是几号，取余是因为10号按键表示0
+  67   5                
+  68   5            LCD_ShowNum(2,10,Password,4);//在LED屏幕上显示第几个按键
+  69   5             }
+  70   4      }} 
+  71   2        if(KeyNum==11)//如果11按键按下，表示密码确认，
+  72   2          {
+  73   3            //如果初始密码不为2345则这个就会出错
+  74   3            if(Password==Passwordset)
+  75   3            {
+  76   4              LCD_ShowString(2,15,"OK ");
+  77   4              Password=0;
+  78   4              count=0;//可以实现从新输入
+  79   4              //LCD_ShowString(1,14,"  ");
+  80   4              LCD_ShowNum(2,10,Password,4);       
+  81   4            }else{
+  82   4             LCD_ShowString(2,15,"ER");
+  83   4              switch(count)
+  84   4              {
+  85   5                case 1:Password=Password%Password;break;
+  86   5                case 2:Password=Password/10;break;
+  87   5                case 3:Password=Password/10;break;
+  88   5                default: Password=0;break;
+  89   5                
+  90   5              }
+  91   4              count=0;//
+  92   4              //LCD_ShowString(1,13,"   ");
+  93   4              LCD_ShowNum(2,10,Password,4);//更新显示，显示删除之后的
+  94   4            }
+  95   3          }
+  96   2      
+  97   2        
+  98   2      }
+  99   1        }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    366    ----
+   CONSTANT SIZE    =     30    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
